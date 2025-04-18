@@ -1,0 +1,330 @@
+/* Container for the navigation bar */
+.nav-container {
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* Prevents overflow of content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
+    margin: 20px; /* Margin for spacing */
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: white;
+    display: flex;
+    justify-content: space-between; /* Keep hamburger on the left */
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 10;
+}
+
+/* Centering the logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    position: absolute; /* Change to absolute */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust for half the width */
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+}
+
+/* Style for each line */
+.hamburger div {
+    height: 4px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Add hover effect */
+.hamburger:hover div {
+    background-color: #555;
+}
+
+/* Animation when opened */
+.hamburger.open div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navigation links */
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin: 0 10px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: grey;
+}
+
+/* Cart icon */
+/* Cart icon */
+.cart-icon {
+    margin-left: auto; /* Pushes the cart icon to the right */
+    position: relative; /* Allows positioning of the cart count inside */
+}
+
+.cart-icon img {
+    width: 20px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    ul {
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        transition: left 0.3s ease;
+    }
+
+    ul.active {
+        left: 0;
+    }
+
+    ul li {
+        text-align: center;
+        margin: 10px 0;
+    }
+}
+
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Example font */
+    background-color: #f4f4f4; /* Background color */
+}
+
+/* Cart icon */
+.cart-icon i {
+    font-size: 25px; /* Adjust icon size as needed */
+    color: black; /* Default color */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+/* Hover effect */
+.cart-icon:hover i {
+    color: grey; /* Change color on hover */
+    transform: scale(1.1); /* Slightly increase size */
+}
+
+/* Update cart count styling */
+.cart-count {
+    background-color: transparent; /* Make background transparent */
+    color: black; /* Change text color to black */
+    border-radius: 50%; /* Keep it rounded */
+    padding: 2px 5px; /* Adjust padding for a smaller size */
+    position: absolute; /* Position it absolutely within the cart icon */
+    top: -5px; /* Adjust vertical position */
+    right: -10px; /* Adjust horizontal position */
+    font-size: 12px; /* Make font size smaller */
+}
+
+.add-to-cart-btn {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: black;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Set a default font for the body */
+}
+
+/* Container for product listings */
+.products-container {
+    display: flex;               /* Use flexbox to arrange children */
+    flex-wrap: wrap;            /* Allow wrapping of items to the next line */
+    justify-content: center;     /* Center items horizontally */
+    margin: 20px;               /* Add margin around the container */
+}
+
+/* Individual product card styling */
+.product-card {
+    border: 1px solid #ccc;      /* Border around the product card */
+    border-radius: 8px;          /* Rounded corners */
+    margin: 10px;                /* Space between product cards */
+    padding: 10px;               /* Inner padding for product card */
+    text-align: center;          /* Center align text in the card */
+    width: 200px;                /* Fixed width for product cards */
+    transition: transform 0.2s;  /* Smooth transition for hover effect */
+}
+
+/* Image styling */
+.product-card img {
+    max-width: 100%;            /* Make images responsive */
+    height: auto;               /* Maintain aspect ratio */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 600px) {
+    .product-card {
+        width: 100%;            /* Full width on small screens */
+    }
+}
+
+.title {
+    color: grey;
+    text-align: center; /* Center the text within the div */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+}
+
+.hero-section p {
+    font-size: 18px;
+}
+
+.cta-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Featured Products Section */
+.featured-products {
+    padding: 20px;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.product-card img {
+    max-width: 100%;
+}
+
+.add-to-cart-btn {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+.add-to-cart-btn:hover {
+   background-color: black;
+}
+
+/* Footer */
+.footer {
+   text-align: center;
+   padding: 20px;
+   background-color: #f4f4f4;
+}
+
+.social-media {
+   list-style-type: none;
+   padding-left: 0;
+}
+.social-media li {
+   display:inline-block;
+   margin-right: 10px;
+}
+.social-media a {
+   text-decoration:none;
+   color:black;
+   font-size:20px;
+}
+/* Container for the background video */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; /* Keeps the video behind the content */
+}
+
+/* Fullscreen video */
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100vw;
+    min-height: 100vh;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Ensures the video covers the entire area */
+}
+#backgroundVideo {
+    position: fixed; /* Fixes the video in place */
+    top: 0;
+    left: 0;
+    min-width: 100%; /* Ensures the video covers the width */
+    min-height: 100%; /* Ensures the video covers the height */
+    width: auto; /* Maintains aspect ratio */
+    height: auto; /* Maintains aspect ratio */
+    z-index: -1; /* Places video behind other content */
+    object-fit: cover; /* Ensures the video covers the area without distortion */
+}

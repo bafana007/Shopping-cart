@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="product.css"> <!-- Reuse existing CSS -->
+    <link rel="stylesheet" href="index.css"> <!-- Reuse existing CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="logo">MySite</div>
+            <ul id="nav-links">
+                <li><a href="#home" style="font-weight: bold;"></a></li>
+                <li><a href="index.html" style="font-weight: bold;">Home</a></li>
+                <li><a href="#services" style="font-weight: bold;">Services</a></li>
+                <li><a href="#contact" style="font-weight: bold;">Contact</a></li>
+            </ul>
+
+            <div class="cart-icon">
+                <span class="cart-count">0</span> <!-- Cart item count -->
+                <a href="#cart">
+                    <i class="fas fa-shopping-cart"></i> <!-- Font Awesome cart icon -->
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="title">
+        <h2>Your Cart</h2>
+    </div>
+
+    <!-- Body container for cart items -->
+    <div id="cart-items" class="products-container"></div>
+
+    <!-- Load your JavaScript file at the end -->
+    <script>
+        // Function to display items from local storage
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                return;
+            }
+
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('product-card'); // Apply product card styling
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="product-name">${item.name}</div>
+                    <div class="product-price">$${item.price}</div>
+                    <button class="remove-from-cart-btn" data-product-name="${item.name}">Remove</button> <!-- Button to remove item -->
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        }
+
+        // Call function on page load
+        window.onload = displayCartItems;
+
+        // Optional: Add functionality to remove items from the cart
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-from-cart-btn')) {
+                const productName = event.target.getAttribute('data-product-name');
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                // Filter out the removed item
+                cartItems = cartItems.filter(item => item.name !== productName);
+
+                // Update local storage and refresh the cart display
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                displayCartItems();
+            }
+        });
+    </script>
+    <script src="addToCart.js"></script>
+</body>
+</html>

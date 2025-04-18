@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation with Hamburger Menu</title>
+    <style>
+        /* General styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for the navigation bar */
+        .nav-container {
+            border-radius: 15px; /* Rounded corners */
+            overflow: hidden; /* Prevents overflow of content */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
+            margin: 20px; /* Margin for spacing */
+        }
+
+        /* Navigation bar styles */
+        nav {
+            background-color: white;
+            display: flex;
+            justify-content: space-between; /* Keep hamburger on the left */
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 10;
+        }
+
+        /* Centering the logo */
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            position: absolute; /* Change to absolute */
+            left: 50%; /* Center it horizontally */
+            transform: translateX(-50%); /* Adjust for half the width */
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: flex; /* Ensure hamburger is visible */
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            margin: 4px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Navigation links */
+        ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 0 10px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: grey;
+        }
+
+        /* Container for body content */
+        .body-container {
+            border-radius: 15px; /* Rounded corners */
+            background-color: white; /* Background color */
+            padding: 20px; /* Padding for content */
+            margin: 20px; /* Margin for spacing */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            ul {
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                flex-direction: column;
+                width: 100%;
+                background-color: white;
+                transition: left 0.3s ease;
+            }
+
+            ul.active {
+                left: 0;
+            }
+
+            ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <div class="hamburger" id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="logo">MySite</div>
+            <ul id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="body-container">
+        <h1>Welcome to My Site</h1>
+        <p>Here is your content...</p>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
